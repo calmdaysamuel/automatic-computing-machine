@@ -1,0 +1,28 @@
+.header {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  height: 60px;
+  border-bottom: 1px solid black;
+  font-size: 15px;
+  align-items: center;
+  padding: 0px 24px;
+  font-weight: 500;
+  background-color: white;
+}
+.spacer {
+  width: 100%;
+}
+
+.header .link {
+  color: black;
+  text-decoration: none;
+  width: 150px;
+}
+.header .link:hover {
+  color: #0066ff;
+}
+.header .logo {
+  font-size: 20px;
+  font-weight: 900;
+}

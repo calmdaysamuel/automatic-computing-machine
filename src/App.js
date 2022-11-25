@@ -4,26 +4,43 @@ import { get_all_topics } from "./api/get_all_topics.ts";
 import { get_all_quizzes } from "./api/get_all_quizzes.ts";
 import { create_quiz } from "./api/create_quiz.ts";
 import { save_score } from "./api/save_score.ts";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { LoginPage } from "./pages/LoginPage";
+import { HomePage } from "./pages/HomePage";
+import { CreateQuizPage } from "./pages/CreateQuizPage";
+import { TopicsPage } from "./pages/TopicsPage";
+import { LeaderboardPage } from "./pages/LeaderboardPage";
+import { ActiveQuizPage } from "./pages/ActiveQuizPage";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <LoginPage />,
+    },
+    {
+      path: "/home",
+      element: <HomePage />,
+    },
+    {
+      path: "/create-quiz",
+      element: <CreateQuizPage />,
+    },
+    {
+      path: "/leaderboard",
+      element: <LeaderboardPage />,
+    },
+    {
+      path: "/topics",
+      element: <TopicsPage />,
+    },
+    {
+      path: "/quiz",
+      element: <ActiveQuizPage />,
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;

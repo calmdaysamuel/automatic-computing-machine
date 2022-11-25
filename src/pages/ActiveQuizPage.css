@@ -1,0 +1,33 @@
+.acp .quiz {
+  padding: 100px 24px;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.acp .question {
+  font-size: 30px;
+  font-weight: 800;
+  margin-top: 8px;
+  margin-bottom: 24px;
+}
+
+.acp .option,
+.acp .next {
+  border: 1px solid black;
+  padding: 16px;
+  margin: 16px 0px;
+  background-color: white;
+}
+.acp .option:hover,
+.acp .next:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+
+.acp .next {
+  max-width: 200px;
+  text-align: center;
+  margin-left: auto;
+}

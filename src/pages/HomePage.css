@@ -1,0 +1,30 @@
+.hp .quiz {
+  border: 1px solid black;
+  padding: 16px;
+  background-color: white;
+}
+.hp .quiz .title {
+  font-size: 20px;
+  font-weight: 800;
+}
+.hp .quiz .start-btn {
+  width: 100%;
+  margin-top: 100%;
+  padding: 8px;
+  text-align: center;
+  border: 1px solid black;
+}
+.hp .quiz .start-btn:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
+.hp .quizzes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 24px;
+  gap: 16px;
+  max-width: 1200px;
+  margin: auto;
+  background-color: white;
+}
