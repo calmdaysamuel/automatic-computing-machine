@@ -23,7 +23,9 @@ export function CreateQuizPage() {
     });
     setQuiz({ ...quiz });
   };
-
+  let setTitle = (event) => {};
+  let setQuestion = (event) => {};
+  let setAnswer = (event) => {};
   let saveQuiz = () => {
     create_quiz(quiz);
   };
@@ -37,14 +39,15 @@ export function CreateQuizPage() {
           placeholder="Enter the name of this quiz . . ."
         />
 
-        {quiz.questions.map((question, index) => {
+        {quiz.questions.map((question, qindex) => {
           console.log(question);
           return (
-            <div className="question" key={index}>
+            <div className="question" key={qindex}>
               <input
                 type="text"
                 className="q-q"
-                placeholder={"Enter Question " + (index + 1)}
+                placeholder={"Enter Question " + (qindex + 1)}
+                value={question.question}
               />
               <div className="options">
                 {question.options.map((option, index) => {
@@ -52,6 +55,7 @@ export function CreateQuizPage() {
                     <input
                       type="text"
                       className="option"
+                      value={option}
                       placeholder={
                         index === 0
                           ? "Enter correct answer here"
