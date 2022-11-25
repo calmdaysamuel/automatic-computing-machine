@@ -1,5 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { get_all_topics } from "./api/get_all_topics.ts";
+import { get_all_quizzes } from "./api/get_all_quizzes.ts";
+import { create_quiz } from "./api/create_quiz.ts";
+import { save_score } from "./api/save_score.ts";
 
 function App() {
   return (
