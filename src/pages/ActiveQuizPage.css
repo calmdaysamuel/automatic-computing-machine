@@ -13,7 +13,8 @@
 }
 
 .acp .option,
-.acp .next {
+.acp .next,
+.c-selected {
   border: 1px solid black;
   padding: 16px;
   margin: 16px 0px;

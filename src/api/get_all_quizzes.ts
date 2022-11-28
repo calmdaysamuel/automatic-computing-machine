@@ -11,6 +11,5 @@ export async function get_all_quizzes() {
       ...doc.data(),
     });
   });
-  console.log(quizzes);
   return quizzes;
 }

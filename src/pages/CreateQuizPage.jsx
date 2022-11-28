@@ -1,8 +1,10 @@
 import { Header } from "../components/Header";
 import { useState } from "react";
+import { redirect, useNavigate } from "react-router-dom";
 import "./CreateQuizPage.css";
 import { create_quiz } from "../api/create_quiz.ts";
 export function CreateQuizPage() {
+  const navigate = useNavigate();
   const [quiz, setQuiz] = useState({
     name: "",
     questions: [
@@ -23,12 +25,18 @@ export function CreateQuizPage() {
     });
     setQuiz({ ...quiz });
   };
-  let setTitle = (event) => {};
-  let setQuestion = (event) => {};
-  let setAnswer = (event) => {};
-  let saveQuiz = () => {
-    create_quiz(quiz);
+  let setTitle = (event) => {
+    quiz.name = event.target.value;
+
+    setQuiz({ ...quiz });
   };
+
+  let saveQuiz = async () => {
+    await create_quiz(quiz);
+    navigate("/home");
+  };
+
+  console.log(quiz);
   return (
     <div className="cqp">
       <Header></Header>
@@ -36,11 +44,11 @@ export function CreateQuizPage() {
         <input
           type="text"
           className="quiz-name"
+          onChange={setTitle}
           placeholder="Enter the name of this quiz . . ."
         />
 
         {quiz.questions.map((question, qindex) => {
-          console.log(question);
           return (
             <div className="question" key={qindex}>
               <input
@@ -48,6 +56,10 @@ export function CreateQuizPage() {
                 className="q-q"
                 placeholder={"Enter Question " + (qindex + 1)}
                 value={question.question}
+                onChange={(event) => {
+                  quiz.questions[qindex].question = event.target.value;
+                  setQuiz({ ...quiz });
+                }}
               />
               <div className="options">
                 {question.options.map((option, index) => {
@@ -56,6 +68,11 @@ export function CreateQuizPage() {
                       type="text"
                       className="option"
                       value={option}
+                      onChange={(event) => {
+                        quiz.questions[qindex].options[index] =
+                          event.target.value;
+                        setQuiz({ ...quiz });
+                      }}
                       placeholder={
                         index === 0
                           ? "Enter correct answer here"
@@ -71,9 +88,9 @@ export function CreateQuizPage() {
         <div className="next" onClick={addQuestion}>
           Add Question
         </div>
-        <a className="next" href="/home" onClick={saveQuiz}>
+        <div className="next" onClick={saveQuiz}>
           Save Quiz
-        </a>
+        </div>
       </div>
     </div>
   );
