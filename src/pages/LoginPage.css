@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(32, 82, 135);
+}
+.lp .lp-makers {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+.lp .lp-login {
+    margin-left: 625px;
+    margin-top: 80px;
+    background: rgb(201, 76, 74);
+    width: 200px;
+    height: 40px;
+    font-weight: bold;
+    color: white;
+    border-radius: 12px;
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: 500px;
+}
