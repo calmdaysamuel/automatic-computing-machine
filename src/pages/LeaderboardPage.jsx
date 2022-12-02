@@ -1,4 +1,5 @@
 import { Header } from "../components/Header";
+
 import { useState, useEffect } from "react";
 import { get_all_scores } from "../api/get_all_scores.ts";
 import "./LeaderboardPage.css";
@@ -23,6 +24,8 @@ export function LeaderboardPage() {
 
           <th className="qname">Quiz Name</th>
           <th className="hscore">Score</th>
+          <th className="hscore"></th>
+          <th className="hscore"></th>
         </tr>
         {scores.map((score, index) => {
           return (
@@ -31,6 +34,16 @@ export function LeaderboardPage() {
 
               <td className="qname">{score.quizName}</td>
               <td className="hscore">{score.score}</td>
+              <td>
+                <a className="qbtn" href={`/summary/${score.id}`}>
+                  Open Score
+                </a>
+              </td>
+              <td>
+                <a className="qbtn" href={`/quiz/${score.quizId}`}>
+                  Play Quiz
+                </a>
+              </td>
             </tr>
           );
         })}

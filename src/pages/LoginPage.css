@@ -1,0 +1,28 @@
+.lp {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+  text-align: center;
+}
+
+.lp-app-title {
+  margin-top: 88px;
+  font-size: 44px;
+  font-weight: 900;
+}
+
+.lp-login {
+  margin-top: 24px;
+  border: 1px solid black;
+  padding: 16px;
+  width: 200px;
+  margin: 16px 0px;
+  background-color: white;
+  font-size: 20px;
+  font-weight: 900;
+}
+.lp-login:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
