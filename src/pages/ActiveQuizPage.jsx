@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { get_quiz } from "../api/get_quiz.ts";
+import { get_trivia_api_quiz } from "../api/get_trivia_api_quiz.js";
 import { save_score } from "../api/save_score.ts";
 import { set_highscore } from "../api/set_highscore.ts";
 import { Header } from "../components/Header";
@@ -12,6 +13,8 @@ export function ActiveQuizPage() {
 
   const [choices, setChoices] = useState([]);
   const [selected, setSelected] = useState(null);
+
+  const [supportedHighscore, setSupportedHighscore] = useState(true);
   const [quiz, setQuiz] = useState({
     questions: [{ question: "", options: [""] }],
   });
@@ -19,6 +22,10 @@ export function ActiveQuizPage() {
   useEffect(() => {
     async function call() {
       let q = await get_quiz(quizId);
+      if (q == null) {
+        q = await get_trivia_api_quiz(quizId);
+        setSupportedHighscore(false);
+      }
       setQuiz(q);
 
       setChoices(new Array(q.questions.length).fill(null));
@@ -45,7 +52,7 @@ export function ActiveQuizPage() {
         userName: "Samuel Calmday",
       });
 
-      if (score * 10 > quiz.highscore) {
+      if (score * 10 > quiz.highscore && supportedHighscore) {
         await set_highscore(quizId, score * 10);
       }
       navigate(`/summary/${scoreId}`);

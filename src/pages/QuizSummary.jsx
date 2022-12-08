@@ -26,12 +26,14 @@ export function QuizSummary() {
   return (
     <div className="hp">
       <Header></Header>
-      {quiz && (
+      {score && (
         <div className="stats">
-          <div className="qs-qname">Quiz Name: {quiz.name}</div>
+          <div className="qs-qname">Quiz Name: {score.quizName}</div>
           <div className="qs-name">Player Name: {score.userName}</div>
           <div className="qs-score">Your Score: {score.score}</div>
-          <div className="qs-hscore">High Score: {quiz.highscore}</div>
+          {quiz && (
+            <div className="qs-hscore">High Score: {quiz.highscore}</div>
+          )}
           <div className="qs-hscore">Time Spent: {score.time}</div>
         </div>
       )}
