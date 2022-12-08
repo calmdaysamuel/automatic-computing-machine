@@ -4,6 +4,7 @@ import { get_quiz } from "../api/get_quiz.ts";
 import { get_trivia_api_quiz } from "../api/get_trivia_api_quiz.js";
 import { save_score } from "../api/save_score.ts";
 import { set_highscore } from "../api/set_highscore.ts";
+import { sign_in_with_google } from "../api/sign_in_with_google.ts";
 import { Header } from "../components/Header";
 import "./ActiveQuizPage.css";
 export function ActiveQuizPage() {
@@ -13,7 +14,7 @@ export function ActiveQuizPage() {
 
   const [choices, setChoices] = useState([]);
   const [selected, setSelected] = useState(null);
-
+  const [username, setUsername] = useState(null);
   const [supportedHighscore, setSupportedHighscore] = useState(true);
   const [quiz, setQuiz] = useState({
     questions: [{ question: "", options: [""] }],
@@ -21,6 +22,9 @@ export function ActiveQuizPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   useEffect(() => {
     async function call() {
+      let user = await sign_in_with_google();
+
+      setUsername(user.user.displayName);
       let q = await get_quiz(quizId);
       if (q == null) {
         q = await get_trivia_api_quiz(quizId);
@@ -49,7 +53,7 @@ export function ActiveQuizPage() {
         quizName: quiz.name,
         score: score * 10,
         time: "0",
-        userName: "Samuel Calmday",
+        userName: username,
       });
 
       if (score * 10 > quiz.highscore && supportedHighscore) {
