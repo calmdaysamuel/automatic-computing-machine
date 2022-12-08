@@ -1,0 +1,20 @@
+.optionsq {
+  margin: auto;
+  max-width: 1200px;
+  padding: 24px;
+}
+
+.optionsq .option {
+  display: block;
+  border: 1px solid black;
+  padding: 16px;
+  text-decoration: none;
+  color: black;
+  margin: 16px 0px;
+  background-color: white;
+}
+.optionsq .option:hover {
+  cursor: pointer;
+  background-color: black;
+  color: white;
+}
