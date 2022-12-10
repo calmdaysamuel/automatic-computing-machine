@@ -15,7 +15,7 @@ export function LoginPage() {
     <div className="lp">
       <img src="Logo.png" alt="Flowers in Chania"></img>
       <h2 className="lp-makers">
-        By Samuel Calmday, Kevin Claiborne, Oluwasubomi Bashorun
+        By Samuel Calmday, Kevin Claiborne, Oluwasubomi Bashorun, Brian Paul
       </h2>
       <button className="lp-login" onClick={signIn}>
         Login

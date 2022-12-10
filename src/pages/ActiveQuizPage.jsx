@@ -4,6 +4,7 @@ import { get_quiz } from "../api/get_quiz.ts";
 import { get_trivia_api_quiz } from "../api/get_trivia_api_quiz.js";
 import { save_score } from "../api/save_score.ts";
 import { set_highscore } from "../api/set_highscore.ts";
+import { user } from "../api/sign_in_with_google.ts";
 import { sign_in_with_google } from "../api/sign_in_with_google.ts";
 import { Header } from "../components/Header";
 import "./ActiveQuizPage.css";
@@ -22,9 +23,9 @@ export function ActiveQuizPage() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   useEffect(() => {
     async function call() {
-      let user = await sign_in_with_google();
+      // let user = user;
 
-      setUsername(user.user.displayName);
+      setUsername("Samuel Calmday");
       let q = await get_quiz(quizId);
       if (q == null) {
         q = await get_trivia_api_quiz(quizId);
